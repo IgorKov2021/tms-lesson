@@ -2,7 +2,9 @@ package org.example;
 
 public class Director extends Employee {
     private TypeOfDirector typeOfDirector;
+
     private int yearsOfExperience;
+
 
     public TypeOfDirector getTypeOfDirectors() {
         return typeOfDirector;

@@ -1,9 +1,17 @@
 package org.example;
 
 public class Engineer extends Employee{
-    private TypeOfEngineers typeOfEngineers;
+    private int yearsOfExperience;
+    private TypeOfEngineer typeOfEngineer;
 
-    public TypeOfEngineers getTypeOfEngineers() {
-        return typeOfEngineers;
+    public TypeOfEngineer getTypeOfEngineers() {
+        return typeOfEngineer;
     }
+
+    Engineer(TypeOfEngineer typeOfEngineer, int yearsOfExperience) {
+        this.typeOfEngineer = typeOfEngineer;
+        this.yearsOfExperience = yearsOfExperience;
+    };
+
+
 }
