@@ -1,17 +1,25 @@
 package org.example;
 
 public class Engineer extends Employee{
-    private int yearsOfExperience;
+
     private TypeOfEngineer typeOfEngineer;
 
     public TypeOfEngineer getTypeOfEngineers() {
         return typeOfEngineer;
     }
 
-    Engineer(TypeOfEngineer typeOfEngineer, int yearsOfExperience) {
-        this.typeOfEngineer = typeOfEngineer;
-        this.yearsOfExperience = yearsOfExperience;
-    };
+    public void setTypeOfEngineer(TypeOfEngineer engineer) {
+        this.typeOfEngineer = engineer;
+    }
+    public int getCoefficientOfEngineer() {
+        return typeOfEngineer.getCoefficient();
+    }
 
-
+    @Override
+    public String toString() {
+        return "Engineer{" + " " + getName() + " " +
+                getSurname() + " " + "Sex: " + getSex() +" " +  typeOfEngineer.name()   + " YearsOfExperience: "
+                +getYearsOfExperience()+
+                '}';
+    }
 }
