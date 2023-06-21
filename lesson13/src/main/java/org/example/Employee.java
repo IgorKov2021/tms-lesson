@@ -5,22 +5,19 @@ public class Employee {
     private String surname;
     private Sex sex;
     private int yearsOfExperience;
+    private TypeOfWorkers type;
 
 
-    public void setName(String name) {
+    public Employee(String name, String surname, Sex sex, int yearsOfExperience, TypeOfWorkers type) {
         this.name = name;
-    }
-
-    public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public void setSex(Sex sex) {
         this.sex = sex;
+        this.yearsOfExperience = yearsOfExperience;
+        this.type = type;
+
     }
 
-    public void setYearsOfExperience(int yearsOfExperience) {
-        this.yearsOfExperience = yearsOfExperience;
+    public Employee() {
     }
 
     public String getName() {
@@ -39,8 +36,36 @@ public class Employee {
         return yearsOfExperience;
     }
 
-    public double getSalary(int coefficientOfEmployee) {
-        double salary = coefficientOfEmployee * (yearsOfExperience + 1);
+    public TypeOfWorkers getType() {
+        return type;
+    }
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public void setType(TypeOfWorkers type) {
+        this.type = type;
+    }
+
+    public double getSalary() {
+        double salary = ((1 + yearsOfExperience) * type.getCoefficient());
         return salary;
     }
+
+
 }
