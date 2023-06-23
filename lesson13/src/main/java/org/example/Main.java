@@ -126,6 +126,7 @@ public class Main {
         System.out.println(d1.listOfSubordinate.size());
         System.out.println("------------------------------------");
 /////////////////////////////////TASK1
+
         System.out.println("Task1");
         Set<Employee> employees = new TreeSet<>(new EmployeeComparator());
         employees.add(d1);
@@ -142,14 +143,16 @@ public class Main {
         employees.add(e9);
         System.out.println(employees);
         System.out.println("***************");
-        List<Employee> allEmp = Arrays.asList(d1,d2,d3,d4,e1,e2,e3,e4,e5,e6,e7,e8,e9);
-        System.out.println(allEmp);
+
+       //Task2
+        System.out.println("Task 2");
+        List<Employee> allEmp = Arrays.asList(d1,d2,d3,d4,e1,e2,e3,e4,e5,e6,e7,e8,e9,d1);
+       // System.out.println(allEmp);
         Map<Employee, Integer> mapEmp = new HashMap<>();
 
-        System.out.println("++++++++++++++++++");
-        System.out.println(mapEmp);
         TestMap test1 = new TestMap();
         test1.getQuantityOfEmployers(mapEmp,allEmp);
+        //System.out.println(mapEmp);
         System.out.println(mapEmp);
     }
     }

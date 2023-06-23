@@ -18,10 +18,15 @@ public enum TypeOfEmp {
         return coefficient;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return  '{' + name() +
                 ", coefficient=" + coefficient +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Type{" + name() + '}';
     }
 }
