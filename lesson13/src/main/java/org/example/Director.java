@@ -1,12 +1,13 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Director extends Employee {
 
 
-    ArrayList<Employee> listOfSubordinate = new ArrayList<>();
+    List<Employee> listOfSubordinate = new ArrayList<>();
 
 
     public Director() {
@@ -47,13 +48,18 @@ public class Director extends Employee {
 
     @Override
     public double getSalary() {
-        return (super.getSalary() * listOfSubordinate.size() / 10) + super.getSalary();
+        return (super.getSalary() * listOfSubordinate.size() / 10) + super.getSalary(); // 10 % за каждого подчиненного
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Type of Director: " + getType().name() +
                 "{ listOfSubordinate=" + listOfSubordinate +
-                '}' + "\n";
+                '}';
+    }*/
+    @Override
+    public String toString() {
+        return "Type of Director: " + getType().name() + " Salary : " + getSalary()+'}' + "\n";
     }
+
 }

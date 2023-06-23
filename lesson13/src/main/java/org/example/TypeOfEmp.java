@@ -1,6 +1,6 @@
 package org.example;
 
-public enum TypeOfWorkers {
+public enum TypeOfEmp {
     GENERAL_MANAGER(800),
     FINANCIAL(500),
     HR(400),
@@ -8,8 +8,9 @@ public enum TypeOfWorkers {
     ROBOTICIST(450),
 
     COMMUNICATOR(500);
-     private int coefficient;
-    TypeOfWorkers(int coefficient) {
+    private int coefficient;
+
+    TypeOfEmp(int coefficient) {
         this.coefficient = coefficient;
     }
 
@@ -19,7 +20,7 @@ public enum TypeOfWorkers {
 
     @Override
     public String toString() {
-        return "TypeOfWorkers{" + name()+
+        return  '{' + name() +
                 ", coefficient=" + coefficient +
                 '}';
     }

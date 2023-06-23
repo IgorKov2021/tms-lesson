@@ -5,10 +5,10 @@ public class Employee {
     private String surname;
     private Sex sex;
     private int yearsOfExperience;
-    private TypeOfWorkers type;
+    private TypeOfEmp type;
 
 
-    public Employee(String name, String surname, Sex sex, int yearsOfExperience, TypeOfWorkers type) {
+    /*public Employee(String name, String surname, Sex sex, int yearsOfExperience, TypeOfEmp type) {
         this.name = name;
         this.surname = surname;
         this.sex = sex;
@@ -18,7 +18,7 @@ public class Employee {
     }
 
     public Employee() {
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -36,7 +36,7 @@ public class Employee {
         return yearsOfExperience;
     }
 
-    public TypeOfWorkers getType() {
+    public TypeOfEmp getType() {
         return type;
     }
 
@@ -58,7 +58,7 @@ public class Employee {
         this.yearsOfExperience = yearsOfExperience;
     }
 
-    public void setType(TypeOfWorkers type) {
+    public void setType(TypeOfEmp type) {
         this.type = type;
     }
 
