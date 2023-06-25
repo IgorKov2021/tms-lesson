@@ -1,3 +1,4 @@
 rootProject.name = 'tms-lesson'
 include 'lesson13'
+include 'generic'
 
