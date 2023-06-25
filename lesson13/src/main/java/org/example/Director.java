@@ -19,9 +19,9 @@ public class Director extends Employee {
     }
 
     public boolean searchSubordinateName(String name) {
-        for (int i = 0; i < listOfSubordinate.size(); i++) {
-            if (listOfSubordinate.get(i).getName().equals(name)) {
-                System.out.println(listOfSubordinate.get(i).getName());
+        for (Employee employee : listOfSubordinate) {
+            if (employee.getName().equals(name)) {
+                System.out.println(employee.getName());
                 return true;
             }
         }
@@ -31,24 +31,23 @@ public class Director extends Employee {
     public boolean searchAllSubordinateName(String name) {
 
 
-        for (int i = 0; i < listOfSubordinate.size(); i++) {
+        for (Employee employee : listOfSubordinate) {
 
-            if (listOfSubordinate.get(i).getName().equals(name)) {
+            if (employee.getName().equals(name)) {
                 return true;
-            } else if (listOfSubordinate.get(i) instanceof Director) {
-
-                if (searchAllSubordinateName(listOfSubordinate.get(i).getName())) {
+            } else if (employee instanceof Director) {
+                if (((Director) employee).searchAllSubordinateName(name)) {
                     return true;
                 }
             }
+
+
         }
         return false;
-
     }
-
     @Override
     public double getSalary() {
-        return (super.getSalary() * listOfSubordinate.size() / 10) + super.getSalary(); // 10 % за каждого подчиненного
+        return (super.getSalary() * ((double) listOfSubordinate.size() / 10 + 1));  // 10 % за каждого подчиненного
     }
 
   /*  @Override

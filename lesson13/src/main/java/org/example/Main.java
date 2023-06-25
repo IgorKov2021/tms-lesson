@@ -116,10 +116,10 @@ public class Main {
         d4.addSubordinate(e7);
         d4.addSubordinate(e8);
         d4.addSubordinate(e9);
-
+        System.out.println(d1.listOfSubordinate);
         System.out.println(d1.searchSubordinateName("Vasili"));
         System.out.println("------");
-        System.out.println(d1.searchAllSubordinateName("Marina"));
+        System.out.println(d1.searchAllSubordinateName("Anna"));
         System.out.println("_______");
         System.out.println(d1);
         System.out.println(d1.getSalary());
@@ -147,12 +147,8 @@ public class Main {
        //Task2
         System.out.println("Task 2");
         List<Employee> allEmp = Arrays.asList(d1,d2,d3,d4,e1,e2,e3,e4,e5,e6,e7,e8,e9,d1);
-       // System.out.println(allEmp);
-        Map<Employee, Integer> mapEmp = new HashMap<>();
-
         TestMap test1 = new TestMap();
-        test1.getQuantityOfEmployers(mapEmp,allEmp);
-        //System.out.println(mapEmp);
-        System.out.println(mapEmp);
+        System.out.println(test1.getQuantityOfEmployers(allEmp));
+
     }
     }
