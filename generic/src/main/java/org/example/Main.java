@@ -16,16 +16,16 @@ public class Main {
 
         PensProcessor pensProcessor = new PensProcessor();
         System.out.println("Добавление элементов:");
-        pensProcessor.addGoods(p1);
-        pensProcessor.addGoods(p2);
-        pensProcessor.addGoods(p3);
-        pensProcessor.addGoods(p4);
+        pensProcessor.addGood(p1);
+        pensProcessor.addGood(p2);
+        pensProcessor.addGood(p3);
+        pensProcessor.addGood(p4);
         System.out.println(pensProcessor.pens);
         System.out.println("---------------------------");
 
         System.out.println("Удаление элементов:");
-        pensProcessor.deleteGoods(p1);
-        pensProcessor.deleteGoods(p2);
+        pensProcessor.deleteGood(p1);
+        pensProcessor.deleteGood(p2);
         System.out.println(pensProcessor.pens);
         System.out.println("--------------------------");
 
@@ -34,12 +34,12 @@ public class Main {
         pensProcessor.createOrder(p3);
 
         EraserProcessor eraserProcessor = new EraserProcessor();
-        eraserProcessor.addGoods(e1);
-        eraserProcessor.addGoods(e2);
-        eraserProcessor.addGoods(e3);
-        eraserProcessor.addGoods(e4);
+        eraserProcessor.addGood(e1);
+        eraserProcessor.addGood(e2);
+        eraserProcessor.addGood(e3);
+        eraserProcessor.addGood(e4);
         eraserProcessor.createOrder(e1);
-        eraserProcessor.deleteGoods(e2);
+        eraserProcessor.deleteGood(e2);
         System.out.println(eraserProcessor.erasers);
 
 

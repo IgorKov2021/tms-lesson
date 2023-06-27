@@ -1,19 +1,20 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PensProcessor implements Operations<Pen> {
 
-    ArrayList<Pen> pens = new ArrayList<>();
-    ArrayList<Pen> order = new ArrayList<>();
+    List<Pen> pens = new ArrayList<>();
+    List<Pen> order = new ArrayList<>();
 
     @Override
-    public void addGoods(Pen good) {
+    public void addGood(Pen good) {
         pens.add(good);
     }
 
     @Override
-    public void deleteGoods(Pen good) {
+    public void deleteGood(Pen good) {
         pens.remove(good);
     }
 

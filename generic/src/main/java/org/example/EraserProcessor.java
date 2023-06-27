@@ -1,10 +1,11 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EraserProcessor implements Operations <Eraser>{
-    ArrayList<Eraser> erasers = new ArrayList<>();
-    ArrayList<Eraser> orderOfErasers = new ArrayList<>();
+    List<Eraser> erasers = new ArrayList<>();
+    List<Eraser> orderOfErasers = new ArrayList<>();
     @Override
     public void createOrder(Eraser good) {
         if (erasers.contains(good)) {
@@ -18,12 +19,12 @@ public class EraserProcessor implements Operations <Eraser>{
     }
 
     @Override
-    public void addGoods(Eraser good) {
+    public void addGood(Eraser good) {
         erasers.add(good);
     }
 
     @Override
-    public void deleteGoods(Eraser good) {
+    public void deleteGood(Eraser good) {
         erasers.remove(good);
     }
 
