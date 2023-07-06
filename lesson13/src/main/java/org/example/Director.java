@@ -1,85 +1,64 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Director extends Employee {
 
-    private TypeOfDirector typeOfDirector;
-    ArrayList<Employee> listOfSubordinate;
+
+    List<Employee> listOfSubordinate = new ArrayList<>();
 
 
-    public Director(ArrayList<Employee> listOfSubordinate) {
-        this.listOfSubordinate = listOfSubordinate;
+    public Director() {
     }
 
-    public TypeOfDirector getTypeOfDirectors() {
-        return typeOfDirector;
-    }
-
-    public void setTypeOfDirector(TypeOfDirector typeOfDirector) {
-        this.typeOfDirector = typeOfDirector;
-    }
-
-
-    public int getCoefficientOfDirector() {
-        return typeOfDirector.getCoefficient();
-    }
 
     public void addSubordinate(Employee e) {
         listOfSubordinate.add(e);
     }
 
-    public static boolean searchSubordinateName(Director director, String name) {
-        for (int i = 0; i < director.listOfSubordinate.size(); i++) {
-            if (director.listOfSubordinate.get(i).getName().equals(name)) {
-                System.out.println(director.listOfSubordinate.get(i).getName());
+    public boolean searchSubordinateName(String name) {
+        for (Employee employee : listOfSubordinate) {
+            if (employee.getName().equals(name)) {
+                System.out.println(employee.getName());
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean searchAllSubordinateName(Director director, String name) {
+    public boolean searchAllSubordinateName(String name) {
 
 
-            for (int i = 0; i < director.listOfSubordinate.size(); i++) {
+        for (Employee employee : listOfSubordinate) {
 
-                if (director.listOfSubordinate.get(i).getName().equals(name)) {
-                    return true;
-                } else if (director.listOfSubordinate.get(i) instanceof Director) {
-
-                    if(searchAllSubordinateName((Director) director.listOfSubordinate.get(i), name)) {
-                        return true;
-                    }
-
-                } else if (director.listOfSubordinate.get(i).getName().equals(name)) {
-                    System.out.println(director.listOfSubordinate.get(i).getName());
+            if (employee.getName().equals(name)) {
+                return true;
+            } else if (employee instanceof Director) {
+                if (((Director) employee).searchAllSubordinateName(name)) {
                     return true;
                 }
             }
-return false;
 
+
+        }
+        return false;
+    }
+    @Override
+    public double getSalary() {
+        return (super.getSalary() * ((double) listOfSubordinate.size() / 10 + 1));  // 10 % за каждого подчиненного
     }
 
-
+  /*  @Override
+    public String toString() {
+        return "Type of Director: " + getType().name() +
+                "{ listOfSubordinate=" + listOfSubordinate +
+                '}';
+    }*/
     @Override
     public String toString() {
-        return "\n Director{" + getName() + " " + getSurname() + " " + "Sex: " + getSex() + ", " + "YearsOfExperience: "
-                +getYearsOfExperience()+ " " + "typeOfDirector=" + typeOfDirector.name() +
-                ", listOfSubordinates=" + listOfSubordinate + "" +
-                '}';
+        return "Type of Director: " + getType().name() + " Salary : " + getSalary()+'}' + "\n";
     }
 
-    @Override
-    public double getSalary(int coefficientOfEmployee) { // За каждого работника добавляем 10% от суммы
-        return (super.getSalary(coefficientOfEmployee) * listOfSubordinate.size() * 10 / 100) +
-                super.getSalary(coefficientOfEmployee);
-    }
-
-
-    public static void main(String[] args) {
-
-
-    }
 }
