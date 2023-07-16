@@ -1,0 +1,99 @@
+CREATE TYPE sex AS ENUM ('мужчина', 'женщина', 'иное');
+drop table hobbies;
+drop table users;
+drop table type_hobbies;
+drop table data_storage;
+create table users
+(
+    id             integer primary key,
+    name           varchar,
+    sex            sex not null,
+    dataOfBirthday date
+);
+create table hobbies
+(
+    id   integer primary key,
+    name varchar,
+    type integer
+        constraint f_type_hobby REFERENCES type_hobbies (id)
+);
+create table type_hobbies
+(
+    id   smallint primary key,
+    type varchar
+);
+create table data_storage
+(
+    id_user  integer
+        constraint f_user_name REFERENCES users (id),
+    id_hobby integer
+        constraint f_user_hobby REFERENCES hobbies (id)
+);
+
+delete
+from users;
+insert into users (id, name, sex, dataOfBirthday)
+VALUES (1, 'Alex', 'мужчина', '2001-09-28'),
+       (2, 'Rita', 'женщина', '1994-02-24'),
+       (3, 'Ivan', 'мужчина', '1996-01-18'),
+       (4, 'Anna', 'женщина', '1998-04-01'),
+       (5, 'Vadim', 'мужчина', '2003-08-12'),
+       (6, 'Oly', 'женщина', '2001-07-08'),
+       (7, 'Petr', 'мужчина', '1989-03-17'),
+       (8, 'Petr', 'мужчина', '1990-06-21'),
+       (9, 'Janna', 'женщина', '2003-09-24'),
+       (10, 'Anna', 'женщина', '2002-04-21');
+delete from type_hobbies;
+INSERT into type_hobbies (id, type)
+VALUES (1, 'АКТИВНОЕ'),
+       (2, 'СПОКОЙНОЕ');
+delete from hobbies;
+INSERT into hobbies (id, name, type)
+VALUES (1, 'Football', 1),
+       (2, 'Basketball', 1),
+       (3, 'Hockey', 1),
+       (4, 'Volleyball', 1),
+       (5, 'Read books', 2),
+       (6, 'Play piano', 2),
+       (7, 'Play guitar', 2);
+delete
+from data_storage;
+INSERT into data_storage (id_user, id_hobby)
+VALUES (1, 1),
+       (1, 2),
+       (1, 7),
+       (2, 1),
+       (2, 2),
+       (3, 3),
+       (3, 4),
+       (4, 1),
+       (4, 6),
+       (5, 3),
+       (6, 4),
+       (7, 5),
+       (7, 3),
+       (8, 6),
+       (9, 7),
+       (9, 3),
+       (9, 6),
+       (10, 1);
+
+Люди старше 2000 года:
+SELECT * from users where dataOfBirthday < '2000-01-01';
+
+Вывести сколько людей каждого пола есть в бд:
+SELECT sex, count(*) from users group by sex;
+
+Вывести информацию о людях и их хобби:
+SELECT us.name, us.dataOfBirthday, us.sex, h.name, th.type from users us join data_storage ds on
+        us.id = ds.id_user JOIN hobbies h on ds.id_hobby = h.id JOIN type_hobbies th on h.type = th.id;
+
+Вывести список людей у которых более одного хобби:
+SELECT users.name, count(*) from users join data_storage ds on users.id = ds.id_user
+group by dataOfBirthday, users.name having count(*) > 1;
+
+Вывести какое количество активных хобби и пассивных хобби есть в бд:
+SELECT th.type, count(*) from hobbies h join type_hobbies th on h.type = th.id group by th.type order by th.type;
+
+Вывести информацию какое хобби активное а какое пассивное:
+SELECT h.name, t.type FROM hobbies h join type_hobbies t on h.type = t.id;
