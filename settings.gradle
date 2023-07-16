@@ -2,4 +2,8 @@ rootProject.name = 'tms-lesson'
 include 'lesson13'
 include 'generic'
 include 'homework16'
+include 'homework17'
+include 'homework18_multithreading'
+include 'homework_database'
+include 'JDBC'
 
