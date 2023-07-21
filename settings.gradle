@@ -2,4 +2,7 @@ rootProject.name = 'tms-lesson'
 include 'lesson13'
 include 'generic'
 include 'homework16'
+include 'test'
+include 'testMy'
+include 'homework23_Servlet'
 
