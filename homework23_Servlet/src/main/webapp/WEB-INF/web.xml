@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web
+     Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+    <servlet>
+        <servlet-name>information</servlet-name>
+        <servlet-class>org.example.ForAllServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>information</servlet-name>
+        <url-pattern>/information</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>info</servlet-name>
+        <servlet-class>org.example.UserLoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>info</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>filter</filter-name>
+        <filter-class>org.example.UserFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>filter</filter-name>
+        <url-pattern>/info</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>secret</servlet-name>
+        <servlet-class>org.example.InfoForLogInUsersServlet</servlet-class>
+    </servlet>>
+
+    <servlet-mapping>
+        <servlet-name>secret</servlet-name>
+        <url-pattern>/secret</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+</web-app>

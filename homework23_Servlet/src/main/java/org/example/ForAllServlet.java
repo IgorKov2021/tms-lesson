@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class LoginServlet extends HttpServlet {
+public class ForAllServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        writer.println("sdsdsd!");
+
+        writer.println("Information for all users!");
+
 
     }
 }
