@@ -7,4 +7,6 @@ include 'homework18_multithreading'
 include 'homework_database'
 include 'JDBC'
 include 'homework22_servlet'
+include 'homework23_Servlet'
+include 'homework24_HTML'
 
