@@ -6,5 +6,3 @@ include 'homework17'
 include 'homework18_multithreading'
 include 'homework_database'
 include 'JDBC'
-include 'homework22_servlet'
-
