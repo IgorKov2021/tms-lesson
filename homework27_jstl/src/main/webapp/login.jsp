@@ -6,13 +6,11 @@
 
 <html>
 <head>
-
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="my.css">
+    <style><%@ include file="/my.css" %></style>
     <title>Title</title>
 </head>
+
 <body>
-<style><%@ include file="/my.css" %> </style>
 <form method="post" action="/">
     <h3>Sign in or register!</h3>
     login: <input type="text" name="login">
