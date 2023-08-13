@@ -1,5 +1,7 @@
 package org.example.info;
 
+import java.util.List;
+
 public class User {
     private String name;
     private String surname;
@@ -7,12 +9,22 @@ public class User {
     private String email;
     private String login;
 
+    private List<Activities> userActivities;
+
     public User(String name, String surname, String password, String email, String login) {
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.email = email;
         this.login = login;
+    }
+
+    public List<Activities> getUserActivities() {
+        return userActivities;
+    }
+
+    public void setUserActivities(List<Activities> userActivities) {
+        this.userActivities = userActivities;
     }
 
     public String getName() {
@@ -63,6 +75,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
+                ", userActivities=" + userActivities +
                 '}';
     }
 }
