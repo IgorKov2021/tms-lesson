@@ -12,26 +12,16 @@
 <form method="post" action="/tasks">
 <input type="text" name="task">
     <input type="hidden" name="login" value="${login}">
-    <input type="submit" value="ADD">
+ <input type="submit" value="ADD">
 
    </form>
 
 <form method="post" action="/showAll">
     <input type="submit" value="SHOW ALL TASKS">
 </form>
-<%-- <select name="task">
-    <c:forEach var="user" items="${userList}">
-        <option><c:out value="${user.name}" />  - <c:out value="${user.login}" /><</option>>
-            <c:out value="${user.userActivities}" /></li>
-    </c:forEach>
 
-        <option name="1" value="">sdsd</option>
-        <option name = "2"></option>
-        <option name = "3">sdsd </option>
-    </select>
-    <input type="submit" value="ADD">--%>
 
-<c:choose>
+<%--<c:choose>
     <c:when test="${ taskEmpty == 'empty'}">
         <p>TASK NOT FOUND!</p>
     </c:when>
@@ -61,13 +51,27 @@
             </c:choose>
         </c:forEach>
     </ol>
-</c:when>
-    <c:otherwise>
+</c:when>--%>
+
+
+
+
         <ol>
             <c:forEach var = "act" items="${Activity}"  >
                 <c:choose>
-                <c:when test = "${act.status =='DONE'}">
-                </c:when>
+
+                    <c:when test="${ AllAct == 'show'}">
+
+
+
+                                <li> ${act.name} - ${act.status}
+                                </li>
+
+
+
+                    </c:when>
+                    <c:when test = "${act.status =='DONE'}">
+                    </c:when>
                 <c:otherwise>
                     <form method="post" action="/change">
                     <li> ${act.name} - ${act.status}<input type="hidden" name="actName" value="${act.name}">
@@ -77,8 +81,8 @@
                 </c:choose>
             </c:forEach>
         </ol>
-    </c:otherwise>
-    </c:choose>
+   <%-- </c:otherwise>
+    </c:choose>--%>
 
 
 </body>

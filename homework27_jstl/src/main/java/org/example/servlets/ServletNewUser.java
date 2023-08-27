@@ -3,6 +3,7 @@ package org.example.servlets;
 import org.example.info.Activities;
 import org.example.info.DatabaseOfUsers;
 import org.example.info.User;
+import org.example.service.ServiceOfNewUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @WebServlet("/newUser")
 public class ServletNewUser extends HttpServlet {
     DatabaseOfUsers database = new DatabaseOfUsers();
+    ServiceOfNewUser serviceOfNewUser = new ServiceOfNewUser();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> userList = DatabaseOfUsers.getUserList();
@@ -31,23 +33,17 @@ public class ServletNewUser extends HttpServlet {
         String password = req.getParameter("password");
         String surname = req.getParameter("surname");
 
-        List<User> userList = DatabaseOfUsers.getUserList();
-        List<String> collect = userList.stream()
-                .map(user -> user.getLogin())
-                .collect(Collectors.toList());
-        if (login == null || login.isBlank() || password == null || password.isBlank()
-        || collect.contains(login)) {
-            System.out.println("GJDNJH!!!!!");
+
+        User user1 = serviceOfNewUser.saveUser(new User(name,surname,password,email,login));
+        if (user1 != null) {
+            req.getSession().setAttribute("login", user1.getLogin());
+            req.getSession().setAttribute("name", user1.getName());
+
+            req.getRequestDispatcher("/tasks.jsp").forward(req,resp);
+
+        } else {
             req.setAttribute("repeat",true);
             req.getRequestDispatcher("/newUser.jsp").forward(req, resp);
-        } else {
-            User user = new User(name, surname, password, email, login);
-            userList.add(user);
-            req.getSession().setAttribute("name", user.getName());
-            req.setAttribute("login", user.getLogin());
-            getServletContext().setAttribute("user", user);
-            req.getRequestDispatcher("/tasks.jsp").forward(req,resp);
-            System.out.println(userList);
         }
 
     }

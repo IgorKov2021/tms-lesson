@@ -26,7 +26,7 @@
     <c:when test="${ blank == 'blank'}">
         <p>FIELDS LOGIN AND PASSWORD CAN NOT BE EMPTY! </p>
     </c:when>
-    <c:when test="${ wrongPassword == 'wrong'}">
+    <c:when test="${ blank == 'wrong'}">
         <p>WRONG LOGIN OR PASSWORD!</p>
         </c:when>
 </c:choose>
