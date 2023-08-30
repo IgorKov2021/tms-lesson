@@ -2,6 +2,8 @@ package org.example.servlets;
 
 import org.example.info.Activities;
 import org.example.info.User;
+import org.example.service.ServiceOfTasks;
+import org.example.service.ServiceOfUsers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,56 +16,23 @@ import java.util.List;
 
 @WebServlet("/tasks")
 public class ServletOfTask extends HttpServlet {
-
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
-
     @Override
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String login = (String)req.getSession().getAttribute("login");
         String task = req.getParameter("task");
-       Object user = getServletContext().getAttribute("user");
-
-        User user1 = (User) user;
 
 
-        if (task != null || !task.isEmpty()) {
+        ServiceOfTasks serviceOfTasks = new ServiceOfTasks();
+        ServiceOfUsers serviceOfUsers = new ServiceOfUsers();
+        User user = serviceOfUsers.getUser(login);
 
-            Object activity = getServletContext().getAttribute("Activity");
-            getServletContext().removeAttribute("Activity");
+        req.getSession().setAttribute("Activity", serviceOfTasks.saveTask(user,task));
 
-            if (activity == null) {
-                List<Activities> actNew = new ArrayList<>();
-                Activities act = new Activities(task);
-                actNew.add(act);
-
-                // getServletContext().setAttribute("Activity", actNew);
-                user1.setUserActivities(actNew);
-
-                getServletContext().setAttribute("Activity", user1.getUserActivities());
-                getServletContext().setAttribute("ActivityDone", user1.getUserActivities());
-                req.getRequestDispatcher("tasks.jsp").forward(req, resp);
-            } else {
-                List<Activities> activities = (List<Activities>) activity;
-                List<Activities> actNew = new ArrayList<>(activities);
-                Activities act = new Activities(task);
-                actNew.add(act);
-                user1.setUserActivities(actNew);
-
-                getServletContext().setAttribute("Activity", user1.getUserActivities());
-                getServletContext().setAttribute("ActivityDone", user1.getUserActivities());
+        req.getRequestDispatcher("tasks.jsp").forward(req, resp);
 
 
-                getServletContext().setAttribute("taskEmpty", "notempty");
-
-                //getServletContext().setAttribute("Activity", actNew);
-
-                req.getRequestDispatcher("tasks.jsp").forward(req, resp);
-            }
-        }
 
     }
 

@@ -33,4 +33,16 @@ public class Activities {
                 ", status=" + status +
                 '}';
     }
+
+    public void changeStatus() {
+        Integer point = status.getPoint();
+        if(point != 1) {
+            point = point - 1;
+            for (Status status1 : Status.values()) {
+                if (status1.getPoint() == point) {
+                    this.status = status1;
+                }
+            }
+        }
+    }
 }

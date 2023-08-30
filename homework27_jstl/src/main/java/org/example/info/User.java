@@ -1,5 +1,6 @@
 package org.example.info;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -23,8 +24,18 @@ public class User {
         return userActivities;
     }
 
+
     public void setUserActivities(List<Activities> userActivities) {
         this.userActivities = userActivities;
+    }
+    public void addActivity(Activities act) {
+        if (userActivities != null) {
+            List<Activities> act2 = new ArrayList<>(userActivities);
+            act2.add(act);
+            setUserActivities(act2);
+        } else {
+            setUserActivities(List.of(act));
+        }
     }
 
     public String getName() {

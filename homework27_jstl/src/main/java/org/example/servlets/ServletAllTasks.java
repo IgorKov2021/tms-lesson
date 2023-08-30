@@ -13,19 +13,15 @@ import java.util.List;
 @WebServlet("/showAll")
 
 public class ServletAllTasks extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Object userAllAct = getServletContext().getAttribute("Activity");
-        List<Activities> listAllAct= (List<Activities>)userAllAct;
-        getServletContext().setAttribute("AllAct", listAllAct);
-        System.out.println(listAllAct);
-        getServletContext().setAttribute("taskEmpty", "all");
+
+        req.setAttribute("AllAct", "show");
         req.getRequestDispatcher("tasks.jsp").forward(req, resp);
+
+
 
     }
 }
