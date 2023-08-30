@@ -13,5 +13,3 @@ include 'homework25_bootstrap'
 include 'homework23_Servlet'
 include 'homework26'
 include 'homework26_JSP'
-include 'homework27_jstl'
-
