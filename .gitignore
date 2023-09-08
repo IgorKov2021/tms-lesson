@@ -15,6 +15,7 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+.idea/
 
 ### Eclipse ###
 .apt_generated
@@ -44,3 +45,7 @@ bin/
 /.idea/misc.xml
 /.idea/uiDesigner.xml
 /.idea/gradle.xml
+/.idea/workspace.xml
+/.idea
+/homework17/.gitignore
+/homework31_hibernate/.gitignore
