@@ -7,23 +7,21 @@ import org.example.crud.TypeOfUser;
 import org.example.settings.AppSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class UserService extends AbstractService<Person> implements Updatable<Person,TypeOfUser>{
+public class UserService extends AbstractService<Person> implements Updatable<Person, TypeOfUser> {
     @Override
     public void updateType(Person person, TypeOfUser type) {
         Session session = AppSessionFactory.getSession();
         Transaction transaction = session.beginTransaction();
         session.createQuery("update Person as p set p.type = :type where p.id = :id").
                 setParameter("id", person.getId()).
-                setParameter("type",type).executeUpdate();
+                setParameter("type", type).executeUpdate();
 
         transaction.commit();
         session.close();
     }
-
 
 
     public Person getPerson(Integer id) {
@@ -38,6 +36,7 @@ public class UserService extends AbstractService<Person> implements Updatable<Pe
 
         return person;
     }
+
     public List<Person> getPersonsWithActiveTasks() {
         Session session = AppSessionFactory.getSession();
         Transaction transaction = session.beginTransaction();
@@ -46,7 +45,6 @@ public class UserService extends AbstractService<Person> implements Updatable<Pe
         return persons;
 
     }
-
 
 
 }

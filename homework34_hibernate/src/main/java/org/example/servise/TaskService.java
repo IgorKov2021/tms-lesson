@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class TaskService extends AbstractService<Task> implements Updatable<Task, StatusTask>{
+public class TaskService extends AbstractService<Task> implements Updatable<Task, StatusTask> {
     @Override
     public void updateType(Task task, StatusTask statusTask) {
         Session session = AppSessionFactory.getSession();
