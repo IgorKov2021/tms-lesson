@@ -5,31 +5,37 @@ import org.example.domain.Pair;
 import org.example.domain.User;
 import org.example.service.Bet;
 import org.example.service.ServiceStarts;
+import org.example.service.ValidateScanner;
 
 
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @Data
 public class ServiceStartsImpl implements ServiceStarts, Bet {
     GeneratePairs generatePairs;
-    ValidateNumberImpl scanner;
-    ValidateBetImpl betScanner;
+    //ValidateNumberImpl scanner;
+    //ValidateBetImpl betScanner;
+    List<ValidateScanner> validateScanner;
 
-    public ServiceStartsImpl(GeneratePairs generatePairs, ValidateNumberImpl scanner, ValidateBetImpl betScanner) {
+    public ServiceStartsImpl(GeneratePairs generatePairs, List<ValidateScanner> validateScanner) {
         this.generatePairs = generatePairs;
-        this.scanner = scanner;
-        this.betScanner = betScanner;
+        //this.scanner = scanner;
+        //this.betScanner = betScanner;
+        this.validateScanner = validateScanner;
     }
 
     @Override
     public void startRacing() throws InterruptedException {
         System.out.println("ВАШ баланс: " + User.money);
-        Integer bet = betScanner.validate();
-        Integer number = scanner.validate();
+        System.out.println("Введите сумму ставки");
+        Scanner scanner = new Scanner(System.in);
+        int i1 = scanner.nextInt();
+        Integer bet = validateScanner.get(0).validate(i1);
+        Integer number = validateScanner.get(1).validate(i1);
         System.out.println("Гонка началась!");
-        generatePairs.getPair1().setID(1);
         for (int i = 0; i < 5; i++) {
             System.out.println("Круг" + (i + 1));
             System.out.println("......");
