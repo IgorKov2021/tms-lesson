@@ -1,5 +1,6 @@
 package org.example.impl;
 
+import org.example.config.MyAnnotation;
 import org.example.domain.User;
 import org.example.service.ValidateScanner;
 
@@ -7,6 +8,7 @@ import java.util.Scanner;
 
 public class ValidateBetImpl implements ValidateScanner {
     @Override
+    @MyAnnotation
     public Integer validate(int i) {
 
         if (i > User.money) {
