@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="horse1" class="org.example.domain.Horse">
+        <property name="name" value="Amori"></property>
+        <property name="age" value="12"></property>
+    </bean>
+
+    <bean name="horse2" class="org.example.domain.Horse">
+        <property name="name" value="Zorro"></property>
+        <property name="age" value="10"></property>
+    </bean>
+
+    <bean name="horse3" class="org.example.domain.Horse">
+        <property name="name" value="Dikki"></property>
+        <property name="age" value="15"></property>
+    </bean>
+
+    <bean name="rider1" class="org.example.domain.Rider">
+        <property name="name" value="Petr"></property>
+        <property name="age" value="35"></property>
+        <property name="description" value="Winner of the European Championship 2022"></property>
+    </bean>
+
+    <bean name="rider2" class="org.example.domain.Rider">
+        <property name="name" value="Mark"></property>
+        <property name="age" value="32"></property>
+        <property name="description" value="Winner of the European Championship 2021"></property>
+    </bean>
+
+    <bean name="rider3" class="org.example.domain.Rider">
+        <property name="name" value="John"></property>
+        <property name="age" value="38"></property>
+        <property name="description" value="Winner of the European Championship 2020"></property>
+    </bean>
+
+    <bean name="pair1" class="org.example.domain.Pair">
+        <constructor-arg name="horse" ref="horse1"></constructor-arg>
+        <constructor-arg name="rider" ref="rider1"> </constructor-arg>
+    </bean>
+    <bean name="pair2" class="org.example.domain.Pair">
+        <constructor-arg name="horse" ref="horse2"></constructor-arg>
+        <constructor-arg name="rider" ref="rider2"> </constructor-arg>
+    </bean>
+    <bean name="pair3" class="org.example.domain.Pair">
+        <constructor-arg name="horse" ref="horse3"></constructor-arg>
+        <constructor-arg name="rider" ref="rider3"> </constructor-arg>
+    </bean>
+
+    <bean name="pairs" class="org.example.impl.GeneratePairs">
+        <constructor-arg name="pair1" ref="pair1"></constructor-arg>
+        <constructor-arg name="pair2" ref="pair2"></constructor-arg>
+        <constructor-arg name="pair3" ref="pair3"></constructor-arg>
+    </bean>
+
+    <bean name="scanner" class="org.example.impl.ValidateNumberImpl"></bean>
+    <bean name="scanner2" class="org.example.impl.ValidateBetImpl"></bean>
+
+    <bean name = "start" class="org.example.impl.ServiceStartsImpl" autowire="constructor">
+        <!--<constructor-arg name="generatePairs" ref="pairs"></constructor-arg>
+        <constructor-arg name="scanner" ref="scanner"></constructor-arg>-->
+    </bean>
+  
+</beans>
