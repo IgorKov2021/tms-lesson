@@ -15,3 +15,5 @@ include 'homework26'
 include 'homework26_JSP'
 include 'homework27_jstl'
 include 'homework31_hibernate'
+include 'homework35_spring'
+
