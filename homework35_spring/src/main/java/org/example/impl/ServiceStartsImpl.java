@@ -1,6 +1,7 @@
 package org.example.impl;
 
 import lombok.Data;
+import org.example.config.MyAnnotation;
 import org.example.domain.Pair;
 import org.example.domain.User;
 import org.example.service.Bet;
@@ -28,6 +29,7 @@ public class ServiceStartsImpl implements ServiceStarts, Bet {
     }
 
     @Override
+            //@MyAnnotation
     public void startRacing() throws InterruptedException {
         System.out.println("ВАШ баланс: " + User.money);
         System.out.println("Введите сумму ставки");

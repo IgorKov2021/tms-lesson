@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws InterruptedException {
 
-        ApplicationContext context = new AnnotationConfigApplicationContext("org.example.config");
+        ApplicationContext context = new AnnotationConfigApplicationContext("org.example");
         ServiceStarts serviceStarts = context.getBean(ServiceStarts.class);
 
         while (User.money > 0) {

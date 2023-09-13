@@ -11,10 +11,12 @@ import org.example.service.ServiceStarts;
 import org.example.service.ValidateScanner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.List;
 
 @Configuration
+@EnableAspectJAutoProxy
 public class AppConfig {
     @Bean
     public ValidateScanner validateScanner1() {
@@ -60,12 +62,15 @@ public class AppConfig {
     public Pair pair3(Horse horse3, Rider rider3) {
         return new Pair(horse3, rider3);
     }
+
     @Bean
+    @MyAnnotation
     public GeneratePairs generatePairs(Pair pair1, Pair pair2, Pair pair3) {
         return new GeneratePairs(pair1,pair2,pair3);
     }
 
     @Bean
+  //  @MyAnnotation
     public ServiceStarts serviceStarts(GeneratePairs generatePairs, List<ValidateScanner> validateScanners) {
         return new ServiceStartsImpl(generatePairs,validateScanners);
     }
