@@ -16,4 +16,5 @@ include 'homework26_JSP'
 include 'homework27_jstl'
 include 'homework31_hibernate'
 include 'homework32_hibernate'
+include 'homework34_hibernate'
 
