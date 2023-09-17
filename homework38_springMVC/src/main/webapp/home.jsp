@@ -11,6 +11,7 @@
 <head>
     <title>Title</title>
 </head>
+<body>
 <H1>BOOKS</H1>
 <form method="post" action="/books">
     Name of the book: <input type="text" name="title"><br>
