@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Book {
-    String title;
-    String author;
-    Integer numberOfPages;
+    private String title;
+    private String author;
+    private Integer numberOfPages;
 }

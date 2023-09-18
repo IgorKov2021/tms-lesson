@@ -17,10 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class WebController {
 
-    final List<Book> bookList = List.of(new Book("Title1", "Tolstoy", 150),
-            new Book("Title2", "Tolstoy", 300),
-            new Book("Title3", "Tolstoy", 200),
-            new Book("Title1", "Marshak", 400));
+
 
     private BookTitleSearchService bookTitleSearchService;
 
@@ -35,7 +32,7 @@ public class WebController {
 
         ModelAndView modelAndView = new ModelAndView("home");
 
-        List<Book> books = bookTitleSearchService.getBooks(name, bookList);
+        List<Book> books = bookTitleSearchService.getBooks(name);
 
         if (books.size() == 0) {
             String message = "Books with title: " + name + " are not found";
