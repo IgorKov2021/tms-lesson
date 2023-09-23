@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<H1>Привет!</H1>
+<H1>BOOKSERVICE</H1>
 <form method="post" action="/">
     Title:      <input type="text" name="title"> ${title_error}<br>
     Author:     <input type="text" name="author">${author_error}<br>
