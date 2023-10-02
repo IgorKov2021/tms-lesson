@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/home42_Students
+    password: 123456
+    username: IgorSQL
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true

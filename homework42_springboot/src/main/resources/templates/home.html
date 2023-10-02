@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+sadsdasd
+<div th:text="dfdfdfdf">aaaaaaa</div>
+<div th:text="${title}">aaaaaaa</div>
+<div></div>
+
+<form action="/student" method="post" th:object="${student}">
+    <input th:field="*{name}" placeholder="name">
+    <input th:field="*{surname}" placeholder="surname">
+    <input th:field="*{course}" placeholder="course">
+    <button>SAVE</button>
+</form>
+<hr>
+<ol>
+    <li th:each="item : ${studentsList} "><p th:text="'Студента зовут: ' + ${item.name} +
+    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '!' "></p></li>
+</ol>
+</body>
+</html>
