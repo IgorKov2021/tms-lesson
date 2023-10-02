@@ -7,7 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.UUID;
-
+// перестал работать LOMBOK поэтому добавил getter setter
 @Entity
 @Data
 @NoArgsConstructor
