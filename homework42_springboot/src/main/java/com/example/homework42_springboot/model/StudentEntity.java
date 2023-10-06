@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Random;
 import java.util.UUID;
+
 // перестал работать LOMBOK поэтому добавил getter setter
 @Entity
 @Data
@@ -17,10 +19,12 @@ public class StudentEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    UUID id;
-    String name;
-    String surname;
-    Integer course;
+    private UUID id;
+    private String name;
+    private String surname;
+    private Integer course;
+    private Integer number;
+
 
     public UUID getId() {
         return id;
@@ -52,5 +56,19 @@ public class StudentEntity {
 
     public void setCourse(Integer course) {
         this.course = course;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(10);
+        this.number = randomNumber;
+    }
+
+    public void setNewNumber(Integer number) {
+        this.number = number;
     }
 }

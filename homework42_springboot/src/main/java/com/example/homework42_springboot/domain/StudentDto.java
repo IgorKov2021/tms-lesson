@@ -3,16 +3,20 @@ package com.example.homework42_springboot.domain;
 import lombok.*;
 
 import javax.validation.constraints.Min;
+import java.util.Random;
 import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class StudentDto {
-    UUID id;
-    String name;
-    String surname;
-    Integer course;
+    private UUID id;
+    private String name;
+    private String surname;
+    private Integer course;
+    private Integer number;
+
+
 
     public UUID getId() {
         return id;
@@ -44,5 +48,14 @@ public class StudentDto {
 
     public void setCourse(Integer course) {
         this.course = course;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+
+        this.number = number;
     }
 }

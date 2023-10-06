@@ -6,10 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-sadsdasd
-<div th:text="dfdfdfdf">aaaaaaa</div>
-<div th:text="${title}">aaaaaaa</div>
-<div></div>
+<div th:text="${title}"></div>
 
 <form action="/student" method="post" th:object="${student}">
     <input th:field="*{name}" placeholder="name">
@@ -20,7 +17,15 @@ sadsdasd
 <hr>
 <ol>
     <li th:each="item : ${studentsList} "><p th:text="'Студента зовут: ' + ${item.name} +
-    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '!' "></p></li>
+    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '! '  + ${item.number}">
+
+        <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}" >
+        <input type="submit" name="action" value="UP">
+        <input type="submit" name="action" value="DOWN">
+
+    </form>
+
+    </p></li>
 </ol>
 </body>
 </html>
