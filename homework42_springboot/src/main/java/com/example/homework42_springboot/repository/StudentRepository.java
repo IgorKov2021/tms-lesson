@@ -12,5 +12,6 @@ public interface StudentRepository extends JpaRepository<StudentEntity, UUID>, J
     List<StudentEntity> findAllByOrderByNumberAsc();
 
     StudentEntity getById(UUID id);
+    StudentEntity findDistinctFirstByOrderByNumberAsc();
 
 }
