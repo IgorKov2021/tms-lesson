@@ -7,17 +7,28 @@
 </head>
 <body>
 <div th:text="${title}"></div>
-
+<hr>
+<h1>Search</h1>
+<form action="/student/search" method="post" th:object="${studentSearch}">
+    Name: <input type="text" th:field="*{name}" name="name"> <br>
+    Surname: <input type="text" th:field="*{surname}" name="surname"> <br>
+    Course: <input type="number" th:field="*{course}" name="course">
+    <p th:if = "${#fields.hasErrors('course')}" th:errors="*{course}">Invalid Age</p><br>
+    <input type="submit" value="Search">
+</form>
+<hr>
+<br>
 <form action="/student" method="post" th:object="${student}">
     <input th:field="*{name}" placeholder="name">
     <input th:field="*{surname}" placeholder="surname">
     <input th:field="*{course}" placeholder="course">
+    <p th:if = "${#fields.hasErrors('course')}" >Invalid value ( should be from 1 to 7)</p>
     <button>SAVE</button>
 </form>
 <hr>
 <ol>
     <li th:each="item : ${studentsList} "><p th:text="'Студента зовут: ' + ${item.name} +
-    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '! '  + ${item.number}">
+    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '! '  +  'сортировка по значению: ' + ${item.number}">
 
         <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}" >
         <input type="submit" name="action" value="UP">
