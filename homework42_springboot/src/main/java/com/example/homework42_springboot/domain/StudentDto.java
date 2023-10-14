@@ -2,6 +2,7 @@ package com.example.homework42_springboot.domain;
 
 import lombok.*;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Random;
 import java.util.UUID;
@@ -13,9 +14,10 @@ public class StudentDto {
     private UUID id;
     private String name;
     private String surname;
+    @Max(7)
+    @Min(1)
     private Integer course;
     private Integer number;
-
 
 
     public UUID getId() {

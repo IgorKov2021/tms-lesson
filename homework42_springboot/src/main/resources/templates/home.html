@@ -7,25 +7,80 @@
 </head>
 <body>
 <div th:text="${title}"></div>
-
+<hr>
+<h1>Search</h1>
+<form action="/student/search" method="post" th:object="${studentSearch}">
+    Name: <input type="text" th:field="*{name}" name="name"> <br>
+    Surname: <input type="text" th:field="*{surname}" name="surname"> <br>
+    Course: <input type="number" th:field="*{course}" name="course">
+    <p th:if="${#fields.hasErrors('course')}" th:errors="*{course}">Invalid Age</p><br>
+    <input type="submit" value="Search">
+</form>
+<hr>
+<br>
 <form action="/student" method="post" th:object="${student}">
     <input th:field="*{name}" placeholder="name">
     <input th:field="*{surname}" placeholder="surname">
     <input th:field="*{course}" placeholder="course">
+    <p th:if="${#fields.hasErrors('course')}">Invalid value ( should be from 1 to 7)</p>
     <button>SAVE</button>
 </form>
 <hr>
 <ol>
-    <li th:each="item : ${studentsList} "><p th:text="'Студента зовут: ' + ${item.name} +
-    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '! '  + ${item.number}">
 
-        <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}" >
-        <input type="submit" name="action" value="UP">
-        <input type="submit" name="action" value="DOWN">
+    <li th:each="item,iterstat : ${studentsList} "><p th:text="'Студента зовут: ' + ${item.name} +
+    ' Фамилия: ' + ${item.surname} + ' Курс : ' + ${item.course} + '! '  +  'сортировка по значению: ' + ${item.number}">
 
-    </form>
 
-    </p></li>
+        <!-- <p th:text="${iterstat.count}"></p>
+        <p th:text="${studentsList.size()}"></p>-->
+        <div th:if="${iterstat.count} == 1">
+              <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}">
+                  <input type="submit" name="action" value="DOWN">
+              </form>
+          </div>
+          <div th:if="${iterstat.count} == ${studentsList.size()}">
+              <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}">
+                  <input type="submit" name="action" value="UP">
+              </form>
+          </div>
+
+        <div th:if="${iterstat.count} > 1 and  ${iterstat.count} < ${studentsList.size()}">
+            <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}">
+                <input type="submit" name="action" value="UP">
+                <input type="submit" name="action" value="DOWN">
+
+
+            </form>
+        </div>
+
+       <!-- НЕ работает чего-то
+        <div th:switch="${iterstat.count}">
+            <p th:case="1"> <div><form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}">
+                <input type="submit" name="action" value="DOWN">
+            </form>
+            </div>
+            </p>
+            <p th:case="${studentsList.size()}">
+            <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}">
+                <input type="submit" name="action" value="UP">
+            </form>
+            </p>
+            <p th:case="*">
+            <form action="student/action" method="post" th:action="@{/student/action (id=${item.id})}">
+                <input type="submit" name="action" value="UP">
+                <input type="submit" name="action" value="DOWN">
+            </form>
+            </p>
+        </div>-->
+
+
+        </p></li>
+
+
 </ol>
+
+<hr>
+
 </body>
 </html>
