@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,9 @@ public class StudentController {
         // List<StudentDto> allStudents = service.getAll();
         List<StudentDto> allStudents = service.sortAll2();
 
+
         modelAndView.addObject("studentsList", allStudents);
+
 
         return modelAndView;
     }
