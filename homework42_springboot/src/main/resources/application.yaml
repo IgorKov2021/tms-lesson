@@ -5,5 +5,14 @@ spring:
     username: IgorSQL
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     show-sql: true
+#  mvc:
+#    view:
+#      prefix: pages/
+#      suffix: .jsp
+#management:
+#  endpoints:
+#    web:
+#     exposure:
+#        include: '*'
