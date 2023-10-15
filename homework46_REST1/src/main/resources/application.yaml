@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: applicatopnRest
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/home46_rest
+    username: IgorSQL
+    password: 123456
