@@ -1,5 +1,11 @@
 spring:
-  security:
-    user:
-      name: Igor
-      password: 1234
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spr_sec
+    password: 123456
+    username: IgorSQL
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
