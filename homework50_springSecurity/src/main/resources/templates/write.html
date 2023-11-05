@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Permission ALL</h1>
+
+<ol>
+    <li th:each="item : ${authorities} "> <p th:text="'User\'s authorities: ' + ${item}"> </p></li>
+</ol>
+</body>
+</html>
