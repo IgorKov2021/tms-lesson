@@ -8,5 +8,6 @@ public class Service {
             return str.toLowerCase().indexOf(substr.toLowerCase());
         }
         throw new NullStringException();
+
     }
 }
